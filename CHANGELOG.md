@@ -7,10 +7,11 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 ### Added
 - Added PHP 8.5
+- Added PHP 8.6 (PHP 8.6.0, GA 19 Nov 2026). The official `php:8.6` images are always thread-safe (ZTS) and no longer bundle PEAR/`pecl` or `mbstring`; the devilbox php-fpm 8.6 image re-adds `pecl` and `mbstring`. Some PECL extensions are not yet available for 8.6 — see the php-fpm module table.
 
 ### Changed
-- Updated php-fpm images to `0.161` (PHP 8.4.27 / 8.5.12; PHP 8.1+ on Debian bookworm, 7.4/8.0 on bullseye)
-- `dvl up` without `DEVILBOX_CONTAINERS` now starts the full default list (adds `php84` and `php85`); re-sync `docker-compose.override.yml` (`dvl update`) or set `DEVILBOX_CONTAINERS`
+- Updated php-fpm images to `0.161` (PHP 8.4.28 / 8.5.13 / 8.6.0; PHP 8.1+ on Debian bookworm, 7.4/8.0 on bullseye)
+- `dvl up` without `DEVILBOX_CONTAINERS` now starts the full default list (adds `php84`, `php85` and `php86`); re-sync `docker-compose.override.yml` (`dvl update`) or set `DEVILBOX_CONTAINERS`
 
 ### Fixed
 - `.gitignore` ignored `cfg/php-ini-8.4/*.conf` instead of `cfg/php-fpm-8.4/*.conf`

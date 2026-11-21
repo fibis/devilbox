@@ -50,6 +50,7 @@
 /log/php-fpm-8.3/*
 /log/php-fpm-8.4/*
 /log/php-fpm-8.5/*
+/log/php-fpm-8.6/*
 !/log/.keepme
 !/log/*/.keepme
 
@@ -98,6 +99,7 @@
 /cfg/php-ini-8.3/*.ini
 /cfg/php-ini-8.4/*.ini
 /cfg/php-ini-8.5/*.ini
+/cfg/php-ini-8.6/*.ini
 
 # Ignore custom disabled PHP.ini configs
 /cfg/php-ini-5.6/*.ini-disabled
@@ -112,6 +114,7 @@
 /cfg/php-ini-8.3/*.ini-disabled
 /cfg/php-ini-8.4/*.ini-disabled
 /cfg/php-ini-8.5/*.ini-disabled
+/cfg/php-ini-8.6/*.ini-disabled
 
 # Ignore custom PHP-FPM configs
 /cfg/php-fpm-5.6/*.conf
@@ -126,6 +129,7 @@
 /cfg/php-fpm-8.3/*.conf
 /cfg/php-fpm-8.4/*.conf
 /cfg/php-fpm-8.5/*.conf
+/cfg/php-fpm-8.6/*.conf
 
 # Ignore custom PHP-FPM startup scripts
 /autostart/*.sh
@@ -141,6 +145,7 @@
 /cfg/php-startup-8.3/*.sh
 /cfg/php-startup-8.4/*.sh
 /cfg/php-startup-8.5/*.sh
+/cfg/php-startup-8.6/*.sh
 
 # Ignore custom Varnish configs
 /cfg/varnish-4/*.vcl
@@ -166,6 +171,7 @@
 /mod/php-fpm-8.3/*.so
 /mod/php-fpm-8.4/*.so
 /mod/php-fpm-8.5/*.so
+/mod/php-fpm-8.6/*.so
 
 # Ignore supervisord configs
 /supervisor/*.conf

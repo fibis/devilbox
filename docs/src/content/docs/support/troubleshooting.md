@@ -100,7 +100,7 @@ grep '^CONTAINERS_CONFIG_' .env env-example
 ```
 
 Current PHP containers are `php74`, `php81`, `php82`, `php83`, `php84`,
-and `php85`. Remove obsolete custom service names from local overrides and
+`php85`, and `php86`. Remove obsolete custom service names from local overrides and
 `DEVILBOX_CONTAINERS`.
 
 Recreate PHP after changing image tags or mounts:

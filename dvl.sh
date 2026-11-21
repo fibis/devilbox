@@ -207,7 +207,7 @@ YQ_BINARY="$DEVILBOX_PATH/.tests/binaries/yq"
 
 # Read-only variables
 readonly VERSION="1.2.6"
-readonly DEFAULT_DVL_CONTAINERS="bind httpd php php74 php81 php82 php83 php84 php85 mysql redis opensearch buggregator"
+readonly DEFAULT_DVL_CONTAINERS="bind httpd php php74 php81 php82 php83 php84 php85 php86 mysql redis opensearch buggregator"
 
 function main {
   if [[ $# -eq 0 ]] ; then
@@ -1628,7 +1628,7 @@ function InteractiveQuestions {
     7.0|70|7.1|71|7.2|72|7.3|73|7.4|74)
       PHP_VERSION=$(awk '{gsub(/[.]/,"");print $NF}' <<< "php$response")
       ;;
-    8.0|80|8.2|82|8.3|83|8.4|84|8.5|85)
+    8.0|80|8.2|82|8.3|83|8.4|84|8.5|85|8.6|86)
       PHP_VERSION=$(awk '{gsub(/[.]/,"");print $NF}' <<< "php$response")
       ;;
     8.1|81|*)

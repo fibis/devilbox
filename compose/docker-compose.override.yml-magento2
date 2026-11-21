@@ -311,6 +311,33 @@ services:
       # Users SSH directory (read-only)
       - ${HOST_PATH_SSH_DIR}:/home/devilbox/.ssh:ro${MOUNT_OPTIONS}
 
+  php86:
+    <<: *default-php
+    image: devilboxcommunity/php-fpm:8.6-slim-0.161
+    hostname: php86
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.215
+    volumes:
+      # Specific volumes
+      - ${DEVILBOX_PATH}/cfg/php-ini-8.6:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-8.6:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-8.6:/startup.1.d:rw${MOUNT_OPTIONS}
+      # Generic volumes
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+      - ${HOST_PATH_BACKUPDIR}:/shared/backups:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
+      # - ${DEVILBOX_PATH}/cfg/msmtp/msmtprc:/etc/msmtprc:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-8.6:/startup.1.d:rw${MOUNT_OPTIONS}
+      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
+      # Users SSH directory (read-only)
+      - ${HOST_PATH_SSH_DIR}:/home/devilbox/.ssh:ro${MOUNT_OPTIONS}
+
   # ------------------------------------------------------------
   # MySQL Database
   # ------------------------------------------------------------

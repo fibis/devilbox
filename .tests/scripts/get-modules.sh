@@ -68,6 +68,7 @@ PHP82_BASE="$( get_modules "8.2" "base" )"
 PHP83_BASE="$( get_modules "8.3" "base" )"
 PHP84_BASE="$( get_modules "8.4" "base" )"
 PHP85_BASE="$( get_modules "8.5" "base" )"
+PHP86_BASE="$( get_modules "8.6" "base" )"
 
 PHP74_MODS="$( get_modules "7.4" "mods" )"
 PHP80_MODS="$( get_modules "8.0" "mods" )"
@@ -76,13 +77,14 @@ PHP82_MODS="$( get_modules "8.2" "mods" )"
 PHP83_MODS="$( get_modules "8.3" "mods" )"
 PHP84_MODS="$( get_modules "8.4" "mods" )"
 PHP85_MODS="$( get_modules "8.5" "mods" )"
+PHP86_MODS="$( get_modules "8.6" "mods" )"
 
 
 ###
 ### Todo: add ioncube
 ###
-#MODS="$( echo "${PHP74_MODS}, ${PHP80_MODS}, ${PHP81_MODS}, ${PHP82_MODS}, ${PHP83_MODS}, ${PHP84_MODS}, ${PHP85_MODS}" | sed_command 's/,/\n/g' | sed_command -e 's/^\s*//g' -e 's/\s*$//g' | sort -uf )"
-MODS_RAW="${PHP74_MODS},${PHP80_MODS},${PHP81_MODS},${PHP82_MODS},${PHP83_MODS},${PHP84_MODS},${PHP85_MODS}"
+#MODS="$( echo "${PHP74_MODS}, ${PHP80_MODS}, ${PHP81_MODS}, ${PHP82_MODS}, ${PHP83_MODS}, ${PHP84_MODS}, ${PHP85_MODS}, ${PHP86_MODS}" | sed_command 's/,/\n/g' | sed_command -e 's/^\s*//g' -e 's/\s*$//g' | sort -uf )"
+MODS_RAW="${PHP74_MODS},${PHP80_MODS},${PHP81_MODS},${PHP82_MODS},${PHP83_MODS},${PHP84_MODS},${PHP85_MODS},${PHP86_MODS}"
 MODS="$(echo "$MODS_RAW" | tr ',' '\n' | grep -v '^$' | sort -uf)"
 
 
@@ -96,8 +98,8 @@ E="🗸"  # Enabled mods modules (can be disabled)
 D="d"  # Disabled modules (can be enabled)
 U=" "  # Unavailable
 
-echo "| Modules                       | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> | <sup>PHP 8.2</sup> | <sup>PHP 8.3</sup> | <sup>PHP 8.4</sup> | <sup>PHP 8.5</sup> |"
-echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
+echo "| Modules                       | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> | <sup>PHP 8.2</sup> | <sup>PHP 8.3</sup> | <sup>PHP 8.4</sup> | <sup>PHP 8.5</sup> | <sup>PHP 8.6</sup> |"
+echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
 echo "${MODS}" | while read -r line; do
 	# Ignore modules
 	if [ "${line}" = "Core" ]; then
@@ -203,6 +205,21 @@ echo "${MODS}" | while read -r line; do
 			printf "    %s    |" "${D}"      # Currently disabled
 		else
 			if echo ",${PHP85_BASE}," | grep -Eq ",${line},"; then
+				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
+			else
+				printf "    %s    |" "${E}"  # Enabled, can be disabled
+			fi
+		fi
+	else
+		printf "    %s    |" "${U}"          # Not available
+	fi
+
+	# ---------- PHP 8.6 ----------#
+	if echo ",${PHP86_MODS}," | grep -Eq ",${line},"; then
+		if echo "${DISABLED}" | grep -Eq ",${line},"; then
+			printf "    %s    |" "${D}"      # Currently disabled
+		else
+			if echo ",${PHP86_BASE}," | grep -Eq ",${line},"; then
 				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
 			else
 				printf "    %s    |" "${E}"  # Enabled, can be disabled

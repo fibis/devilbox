@@ -39,6 +39,7 @@ The current default installation can include versioned PHP service names:
 | `php83` | PHP 8.3 service. |
 | `php84` | PHP 8.4 service. |
 | `php85` | PHP 8.5 service. |
+| `php86` | PHP 8.6 service. |
 
 Enter a specific service with:
 
